@@ -7,6 +7,8 @@
 
 package expect4j.poc;
 
+import com.jcraft.jsch.Channel;
+import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.ChannelShell;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
@@ -32,9 +34,51 @@ public class SSHConnection {
 	ChannelShell channel = null;
 	Session session = null;
 
+
+
+    public SSHConnection(String host, String user, String privateKey) throws Exception {
+        try {
+            JSch jsch = new JSch();
+
+            jsch.addIdentity(privateKey);
+            System.out.println("identity added ");
+
+            Session session = jsch.getSession(user, host, SSH_PORT);
+            System.out.println("session created.");
+
+            // disabling StrictHostKeyChecking may help to make connection but makes it insecure
+            // see http://stackoverflow.com/questions/30178936/jsch-sftp-security-with-session-setconfigstricthostkeychecking-no
+            //
+            // java.util.Properties config = new java.util.Properties();
+            // config.put("StrictHostKeyChecking", "no");
+            // session.setConfig(config);
+
+            session.connect();
+            System.out.println("session connected.....");
+
+            Channel channel = session.openChannel("exec");
+//            channel.setInputStream(System.in);
+//            channel.setOutputStream(System.out);
+            channel.connect();
+            System.out.println("shell channel connected....");
+            ChannelExec c = ( ChannelExec)channel;
+            c.setCommand("hostname; ls");
+//            while(  c.getOutputStream().
+
+            // ChannelSftp c = (ChannelSftp) channel;
+            // String fileName = "test.txt";
+            // c.put(fileName, "./in/");
+            // c.exit();
+            System.out.println("done");
+
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }
+
 	public SSHConnection(String host, String user) throws Exception {
 
-		String password = "frog7jumper";
+		String password = "password";
 
 		JSch jsch = new JSch();
 		session = jsch.getSession( user, host, SSH_PORT);

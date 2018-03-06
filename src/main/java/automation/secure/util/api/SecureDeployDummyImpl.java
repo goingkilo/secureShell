@@ -14,32 +14,26 @@ public class SecureDeployDummyImpl implements SecureDeploy {
 		this.s = conn;
 	}
 
-	@Override
 	public void backupConfig() throws Exception {
 
 	}
 
-	@Override
 	public void checkoutConfig() throws Exception {
 	}
 
-	@Override
 	public void installConfig() throws Exception {
 	}
 
-	@Override
 	public void sudo() throws Exception {
 
 	}
 
-	@Override
 	public void stop() throws Exception {
 		s.say( "./deploy/stopall");
 		Thread.sleep(2000);
 		s.hear("stop-complete");
 	}
 
-	@Override
 	public void waitUntilStopped() throws Exception {
 		boolean rerun = true;
 		while(true) {
@@ -67,15 +61,12 @@ public class SecureDeployDummyImpl implements SecureDeploy {
 		}
 	}
 
-	@Override
 	public void deploy() throws Exception {
 	}
 
-	@Override
 	public void verifyDeploy() throws Exception {
 	}
 
-	@Override
 	public void start() throws Exception {
 		s.say( "./deploy/startall");
 		Thread.sleep(2000);
@@ -83,7 +74,6 @@ public class SecureDeployDummyImpl implements SecureDeploy {
 		System.out.println( response );
 	}
 
-	@Override
 	public void waitUntilStarted() throws Exception {
 		boolean rerun = true;
 		while(true) {
@@ -111,37 +101,29 @@ public class SecureDeployDummyImpl implements SecureDeploy {
 		}
 	}
 
-	@Override
 	public void installOnRemote() throws Exception {
 	}
 
-	@Override
 	public void getDomainPassword() throws Exception {
 	}
 
-	@Override
 	public void getLocalPassword() throws Exception {
 	}
 
-	@Override
 	public void generateAuditLog() throws Exception {
 	}
 
-	@Override
 	public void generateDeployReport() throws Exception {
 	}
 
-	@Override
 	public void checkInDeployReport() throws Exception {
 	}
 
-	@Override
 	public void verifyLogs(String[] error) throws Exception {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	public void read() {
 		String read = null;
 		while(true) {

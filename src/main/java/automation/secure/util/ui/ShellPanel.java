@@ -80,7 +80,6 @@ public class ShellPanel extends JPanel {
 		}
 	};
 	ActionListener deployActionListener = new ActionListener(){
-		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			try {
 				api.deploy();
@@ -91,7 +90,6 @@ public class ShellPanel extends JPanel {
 		}
 	};
 	ActionListener verifyDeployActionListener = new ActionListener(){
-		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			try {
 				api.verifyDeploy();
@@ -152,7 +150,6 @@ public class ShellPanel extends JPanel {
 		output = new JTextArea();
 
 		input.addActionListener( new ActionListener(){
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				String command = input.getText();
 
@@ -227,7 +224,7 @@ public class ShellPanel extends JPanel {
 	}
 
 	public void go() {
-		JFrame frame = new JFrame("CBAS Secure Deploy");
+		JFrame frame = new JFrame("Secure Deploy");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		frame.add( this);
@@ -239,7 +236,7 @@ public class ShellPanel extends JPanel {
 	}
 
 	public static void main(String[] args) throws Exception {
-		new ShellPanel("server.com", "user", ServerConfig.askPassword(">>")).go();
+		new ShellPanel("taxonomyv2-app1-uat.snc1", "kraghunathan", ServerConfig.askPassword(">>")).go();
 	}
 
 }
