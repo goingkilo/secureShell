@@ -11,8 +11,8 @@ public class SSHKeyPocCMine {
         try{
             JSch jsch=new JSch();
 
-            jsch.addIdentity( "/Users/kraghunathan/.ssh/id_rsa", "frog7jumper");
-            jsch.setKnownHosts( "/Users/kraghunathan/.ssh/known_hosts");
+            jsch.addIdentity( "path to public key", "password");
+            jsch.setKnownHosts( "path of known hosts");
             Session session=jsch.getSession( "id", "host", 22);
 
             session.connect();
