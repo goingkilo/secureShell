@@ -13,7 +13,7 @@ public class SSHKeyPocCMine {
 
             jsch.addIdentity( "/Users/kraghunathan/.ssh/id_rsa", "frog7jumper");
             jsch.setKnownHosts( "/Users/kraghunathan/.ssh/known_hosts");
-            Session session=jsch.getSession( "kraghunathan", "taxonomyv2-app1-uat.snc1", 22);
+            Session session=jsch.getSession( "id", "host", 22);
 
             session.connect();
             ChannelExec channel= (ChannelExec) session.openChannel("exec");
